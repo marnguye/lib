@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <string.h>
 
-int		ft_atoi(char *str);
+int		ft_atoi(const char *str);
 //convert a string to an integer
 void	ft_bzero(void *s, size_t n);
 //zero a byte string
@@ -55,7 +55,7 @@ int		ft_strlen(const char *str);
 //calculate the length of a string
 int		ft_strncmp(const char *s1, char *s2, size_t n);
 //compare two strings
-char	*ft_strnstr(const char *text, char *pattern, size_t n);
+char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 //locate a substring in a string
 char	*ft_strrchr(const char *s, int c);
 //locate character in a string

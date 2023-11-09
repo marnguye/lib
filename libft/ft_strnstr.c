@@ -12,44 +12,25 @@
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
+	if (!s1 || !s2)
+		return (NULL);
+	if (!s1 || !s2[0])
+		return ((char *)s1);
 	i = 0;
-	while (str[i])
+	while (s1[i] && n > i)
 	{
+		j = 0;
+		while (s1[i + j] && s2[i]
+			&& i + j < n && s1[i + j] == s2[j])
+			j++;
+		if (!s2[j])
+			return ((char *)(s1 + i));
 		i++;
-	}
-	return (i);
-}
-
-int	ft_strncmp(const char *s1, char *s2, size_t n)
-{
-	while (n > 0)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		else if (*s1 == '\0')
-			return (0);
-		s1++;
-		s2++;
-		n--;
-	}
-	return (0);
-}
-
-char	*ft_strnstr(const char *text, char *pattern, size_t n)
-{
-	size_t	len;
-
-	len = ft_strlen(pattern);
-	while (*text != '\0' && n >= len)
-	{
-		if (ft_strncmp(text, pattern, len) == 0)
-			return ((char *)text);
-		text++;
-		n--;
 	}
 	return (NULL);
 }
